@@ -1,0 +1,5 @@
+<resources>
+    <!-- Temporary seed color. Replaced by the full Material 3 dynamic
+         color light/dark palette in the "Theme & dark mode" step. -->
+    <color name="xeditor_seed">#6750A4</color>
+</resources>

@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Minimal window theme so the app has a non-blank launch background
+         before Compose's MaterialTheme takes over. Superseded by the full
+         Material 3 + dynamic color + light/dark theme in a later step. -->
+    <style name="Theme.XEditor" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
