@@ -1,6 +1,8 @@
 plugins {
+    // AGP 9.0+ has built-in Kotlin support, so org.jetbrains.kotlin.android
+    // is deliberately not applied here — applying it now causes a build
+    // failure ("no longer required for Kotlin support since AGP 9.0").
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
@@ -44,10 +46,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     buildFeatures {
         compose = true
     }
@@ -56,6 +54,16 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+}
+
+kotlin {
+    // With built-in Kotlin (AGP 9.0+), compiler options are configured
+    // here instead of the old android.kotlinOptions {} block. jvmTarget
+    // would default to android.compileOptions.targetCompatibility (17)
+    // anyway, but it's set explicitly for clarity.
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
