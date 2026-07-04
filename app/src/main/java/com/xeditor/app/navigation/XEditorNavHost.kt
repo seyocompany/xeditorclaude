@@ -10,15 +10,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.xeditor.app.ui.home.HomeScreen
 
 /**
  * Root navigation graph for the app.
  *
- * Each destination below is a temporary placeholder screen — just enough
- * to prove navigation works end to end. The real Home screen, Settings
- * screen, and About screen get built out in their own roadmap steps and
- * will replace these placeholders one at a time without touching this
- * graph's structure.
+ * The Home screen is fully built out (see ui/home/HomeScreen.kt). Settings
+ * and About stay as placeholders until their own roadmap steps replace
+ * them, the same way Home did up until this step.
  */
 @Composable
 fun XEditorNavHost(
@@ -29,7 +28,10 @@ fun XEditorNavHost(
         startDestination = XEditorDestination.Home.route,
     ) {
         composable(route = XEditorDestination.Home.route) {
-            PlaceholderScreen(label = "Home")
+            HomeScreen(
+                onNavigateToSettings = { navController.navigate(XEditorDestination.Settings.route) },
+                onNavigateToAbout = { navController.navigate(XEditorDestination.About.route) },
+            )
         }
         composable(route = XEditorDestination.Settings.route) {
             PlaceholderScreen(label = "Settings")
