@@ -11,13 +11,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.xeditor.app.ui.home.HomeScreen
+import com.xeditor.app.ui.settings.SettingsScreen
 
 /**
  * Root navigation graph for the app.
  *
- * The Home screen is fully built out (see ui/home/HomeScreen.kt). Settings
- * and About stay as placeholders until their own roadmap steps replace
- * them, the same way Home did up until this step.
+ * Home and Settings are fully built out now. About stays a placeholder
+ * until its own roadmap step replaces it.
  */
 @Composable
 fun XEditorNavHost(
@@ -34,7 +34,7 @@ fun XEditorNavHost(
             )
         }
         composable(route = XEditorDestination.Settings.route) {
-            PlaceholderScreen(label = "Settings")
+            SettingsScreen(onNavigateBack = { navController.popBackStack() })
         }
         composable(route = XEditorDestination.About.route) {
             PlaceholderScreen(label = "About")
